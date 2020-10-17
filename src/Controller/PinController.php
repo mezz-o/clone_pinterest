@@ -24,7 +24,7 @@ class PinController extends AbstractController
         // $em->persist($pin1);
         // $em->flush();
 
-        $pins = $pinRepository->findAll();
+        $pins = $pinRepository->findBy([], ['createdAt' => 'DESC']);
 
         return $this->render('pin/index.html.twig', compact('pins'));
     }
