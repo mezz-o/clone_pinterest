@@ -27,8 +27,8 @@ class AppExtension extends AbstractExtension
 
     public function doSomething(int $count, string $s, ?string $p = null): string
     {
-        $p = $p ?? $s .'s';
+        $p = $p ?? $s . 's';
         $str = $count == 1 ? $s : $p;
-       return "$count $str";
+        return "$count $str";
     }
 }

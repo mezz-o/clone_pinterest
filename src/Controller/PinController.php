@@ -7,12 +7,16 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\PinRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 class PinController extends AbstractController
 {
     /**
-     * @Route("/", name="app_home")
+     * @Route("/", name="app_home", methods="GET")
      */
     public function index(PinRepository $pinRepository, EntityManagerInterface $em): Response
     {
@@ -29,10 +33,63 @@ class PinController extends AbstractController
         return $this->render('pin/index.html.twig', compact('pins'));
     }
     /**
-     * @Route("/Pin/{id<[0-9]+>}", name="app_pin_show")
+     * @Route("/Pin/{id<[0-9]+>}", name="app_pin_show", methods="GET")
      */
     public function show(Pin $pin): Response
     {
-       return $this->render('pin/pin.html.twig', compact('pin'));
+        return $this->render('pin/pin.html.twig', compact('pin'));
+    }
+
+    /**
+     * @Route("/Pin/Create", name="app_pin_create", methods="GET|POST")
+     */
+    public function create(Request $req, EntityManagerInterface $em): Response
+    {
+        $pin = new Pin();
+
+        $form = $this->createFormBuilder($pin)
+            ->add('title', TextType::class)
+            ->add('description', TextareaType::class)
+            ->getForm();
+
+        $form->handleRequest($req);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $pin->setTitle('title');
+            $pin->setDescription('description');
+            $em->persist($pin);
+            $em->flush();
+
+            return $this->redirectToRoute("app_home");
+        }
+
+
+
+        return $this->render('pin/create.html.twig', ['form' => $form->createView()]);
+    }
+/**
+ * @Route("/pin/edit/{id<[0-9]+>}", name="app_pin_edit", methods="GET|POST")
+ */
+    public function edit(Pin $pin, EntityManagerInterface $em, Request $req): Response {
+        $form = $this->createFormBuilder($pin)
+        ->add('title', TextType::class)
+        ->add('description', TextareaType::class)
+        ->getForm();
+       
+
+        $form->handleRequest($req);
+
+        if($form->isSubmitted() && $form->isValid()){
+         
+            $em->flush();
+
+            return $this->redirectToRoute("app_home");
+
+        }
+
+        return $this->render("/pin/edit.html.twig", ['form'=>$form->createView(), "pin"=>$pin]);
+
+
     }
 }
