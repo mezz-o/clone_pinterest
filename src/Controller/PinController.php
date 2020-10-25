@@ -10,6 +10,7 @@ use App\Repository\PinRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Csrf\CsrfToken;
 
 class PinController extends AbstractController
 {
@@ -56,8 +57,6 @@ class PinController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $pin->setTitle('title');
-            $pin->setDescription('description');
             $em->persist($pin);
             $em->flush();
 
@@ -91,11 +90,12 @@ class PinController extends AbstractController
     /**
      * @Route("/pin/delete/{id<[0-9]+>}", name="app_pin_delete", methods="DELETE")
      */
-    function delete(Pin $pin, EntityManagerInterface $em)
+    function delete(Request $req, Pin $pin, EntityManagerInterface $em)
     {
-        $em->remove($pin);
-        $em->flush();
-
+        if ($this->isCsrfTokenValid('pin_delete_' . $pin->getId(), $req->request->get('csrf_token'))) {
+            $em->remove($pin);
+            $em->flush();
+        }
         return $this->redirectToRoute("app_home");
     }
 }

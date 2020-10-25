@@ -7,11 +7,12 @@
 <h1>{{ pin.title }}</h1>
 <p>{{ pin.description }}</p>
 <a href="{{path('app_pin_edit', {id:pin.id})}}">Edit</a>
-<a href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-delete-pin-form').submit()">Delete</a>
+<a href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-delete-pin-form').submit();">Delete</a>
 <a href="{{path('app_home')}}">Back</a>
 
-<form id="js-delete-pin-form" method="post" action="{{path('app_pin_delete', {id:pin.id})}}" style="display:none;">
-<input type="hidden" name="_method" value="delete">
+<form id="js-delete-pin-form"   action="{{ path('app_pin_delete', {id:pin.id}) }}" method="post" style="display:none;" >
+<input type="hidden" name="csrf_token" value="{{csrf_token('pin_delete_' ~ pin.id)}}">
+<input type="hidden" name="_method" value="DELETE">
 </form>
 
 {% endblock %}
