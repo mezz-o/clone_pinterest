@@ -87,8 +87,11 @@ class PinController extends AbstractController
 
         return $this->render("/pin/edit.html.twig", ['form' => $form->createView(), "pin" => $pin]);
     }
+
+    //Same Route but different method 
+
     /**
-     * @Route("/pin/delete/{id<[0-9]+>}", name="app_pin_delete", methods="DELETE")
+     * @Route("/pin/{id<[0-9]+>}", name="app_pin_delete", methods="DELETE")
      */
     function delete(Request $req, Pin $pin, EntityManagerInterface $em)
     {
