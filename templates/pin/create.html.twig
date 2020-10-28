@@ -4,12 +4,7 @@
 
 {% block body %}
 
-{{ form_start(form) }}
-{{ form_widget(form) }}
-
-<input type="submit" value="Create pin">
-
-{{ form_end(form) }}
+{% include('/pin/_form.html.twig') %}
 
 
 
