@@ -9,7 +9,9 @@
 {% for pin in pins %}
 <article>
 <a href="{{path('app_pin_show', {id: pin.id})}}"><h4>{{pin.title}}</h4></a>
-<p>{{pin.description}}</p>
+{# Doesnt cut words #}
+<p>{{pin.description|u.truncate(10,'...', false)}}</p>
+<p>Submitted {{pin.createdAt|ago}}</p>
 </article>
     
 {% endfor %}
