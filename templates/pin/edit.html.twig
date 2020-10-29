@@ -1,7 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
+<div class="row">
+<div class="col-md-6 mx-auto">
 {{ include('/pin/_form.html.twig', {submitText: 'Edit Pin'}) }}
-
+</div>
+</div>
 {% endblock %}
