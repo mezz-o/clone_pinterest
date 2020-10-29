@@ -1,10 +1,3 @@
-<style>
-  .flash-info{ background-color: red; text-align: center; color: white;
-
-  }
-
-  .flash-success{ background-color: green; text-align: center; color: white; }
-</style>
 
 {# read and display several types of flash messages #}
 {% for label, messages in app.flashes(['success', 'warning', 'info']) %}
