@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import "~bootstrap/scss/bootstrap";
+
+
+html,
+body {
+  font-family: "Montserrat", sans-serif;
+}
+.flash-info {
+  background-color: red;
+  text-align: center;
+  color: white;
+}
+
+.flash-success {
+  background-color: green;
+  text-align: center;
+  color: white;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
