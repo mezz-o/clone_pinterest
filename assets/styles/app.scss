@@ -24,3 +24,16 @@ footer {
   left: 0;
   right: 0;
 }
+
+.vich-image  { 
+  .form-check {
+@extend .mt-3;
+}
+
+ img {
+  @extend .mb-2;
+  @extend .img-thumbnail;
+  @extend .rounded;
+  @extend .shadow
+}
+}
