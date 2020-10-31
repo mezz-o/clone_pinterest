@@ -12,7 +12,23 @@
     {% endblock %}
   </head>
 
- 
+ <style>
+
+ footer {
+  position:relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: grey;
+  color: white;
+  text-align: center;
+}
+
+  .pin img:hover{
+    transform: scale(1.075);
+  }
+
+ </style>
 
   <body>
     {{ include('/pin/_nav.html.twig') }}

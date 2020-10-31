@@ -4,16 +4,30 @@
 
 {% block body %}
 
-<h1>{{ pluralize(pins|length, 'Pin') }}</h1>
 
-{% for pin in pins %}
-<article>
-<a href="{{path('app_pin_show', {id: pin.id})}}"><h4>{{pin.title}}</h4></a>
+{% if pins|length > 0 %}
+
+<h1 class="text-center mb-4">{{ pluralize(pins|length, 'Pin') }}</h1>
+
+{% for row in pins|batch(3) %}
+<div class="row mb-5">
+{% for pin in row %}
+<div class="col-md-4">
+<article class="pin bg-white rounded shadow">
+<div class="mw-100 overflow-hidden">
+<a href="{{path('app_pin_show', {id: pin.id})}}">
+<img src="{{ (pin.imageName ? vich_uploader_asset(pin) : asset('images/placeholder.jpg')) | imagine_filter('square_thumbnail_medium')}}" alt="{{ pin.title }}" class="w-100"></a>
+</div>
+
+<a class="text-secondary text-decoration-none" href="{{path('app_pin_show', {id: pin.id})}}"><h5 class="pl-3 pt-3">{{pin.title}}</h5></a>
 {# Doesnt cut words #}
-<p>{{pin.description|u.truncate(10,'...', false)}}</p>
-<p>Submitted {{pin.createdAt|ago}}</p>
+<p class="pb-3 pl-3 text-muted"><small>Submitted by [OWNER FULL NAME]</small></p>
 </article>
-    
+    </div>
 {% endfor %}
-
+</div>
+{% endfor %}
+{% else %}
+<p class="h1 mt-5 text-center"> No pins yet <a href="{{path('app_pin_create')}}">Be the first !</a> </p>
+{% endif %}
 {% endblock %}

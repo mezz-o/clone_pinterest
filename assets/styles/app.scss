@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 @import "~bootstrap/scss/bootstrap";
-
 
 html,
 body {
@@ -25,15 +24,18 @@ footer {
   right: 0;
 }
 
-.vich-image  { 
+.vich-image {
   .form-check {
-@extend .mt-3;
-}
+    @extend .mt-3;
+  }
 
- img {
-  @extend .mb-2;
-  @extend .img-thumbnail;
-  @extend .rounded;
-  @extend .shadow
-}
+  img {
+    @extend .mb-2;
+    @extend .img-thumbnail;
+    @extend .rounded;
+    @extend .shadow;
+  }
+
+
+
 }
