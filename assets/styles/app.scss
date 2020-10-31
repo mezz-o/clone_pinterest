@@ -4,20 +4,8 @@
 html,
 body {
   font-family: "Montserrat", sans-serif;
-}
-.flash-info {
-  background-color: red;
-  text-align: center;
-  color: white;
-}
-
-.flash-success {
-  background-color: green;
-  text-align: center;
-  color: white;
-}
-
-footer {
+  background-image: radial-gradient( circle farthest-corner at 11.7% 80.6%,  rgba(249,185,255,1) 0%, rgba(177,172,255,1) 49.3%, rgba(98,203,255,1) 89% );}  
+  footer {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -36,6 +24,10 @@ footer {
     @extend .shadow;
   }
 
+ 
 
+ 
+    
+  
 
 }
