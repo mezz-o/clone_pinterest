@@ -12,9 +12,9 @@
     {% endblock %}
   </head>
 
- <style>
+  <style>
 
-   
+
          .btn-grad {background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA  51%, #77A1D3  100%)}
          .btn-grad {
             margin: 10px;
@@ -34,23 +34,22 @@
             color: #fff;
             text-decoration: none;
           }
-         
-
- footer {
+                                                      
+body{
   position:relative;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: grey;
-  color: white;
-  text-align: center;
+  min-height:100vh;
 }
 
-  .pin img:hover{
-    transform: scale(1.075);
-  }
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align:center;
+}
 
- </style>
+
+    .pin img:hover{ transform: scale(1.075); }
+  </style>
 
   <body>
     {{ include('/pin/_nav.html.twig') }}
@@ -61,6 +60,7 @@
 
       {% endblock %}
     </main>
+    <br />
     {{ include('/pin/_footer.html.twig') }}
     {% block javascripts %}
       {{ encore_entry_script_tags('app') }}

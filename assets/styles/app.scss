@@ -2,16 +2,20 @@
 @import "~bootstrap/scss/bootstrap";
 
 html,
-body {
+body,
+nav {
   font-family: "Montserrat", sans-serif;
-  background-image: radial-gradient( circle farthest-corner at 11.7% 80.6%,  rgba(249,185,255,1) 0%, rgba(177,172,255,1) 49.3%, rgba(98,203,255,1) 89% );}  
-  footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: relative;
+  background-image: linear-gradient(
+    90.9deg,
+    rgba(255, 187, 187, 1) -8.8%,
+    rgba(255, 220, 177, 1) 12.4%,
+    rgba(255, 249, 177, 1) 35.6%,
+    rgba(220, 255, 177, 1) 59.6%,
+    rgba(177, 218, 255, 1) 84%,
+    rgba(222, 177, 255, 1) 107.9%
+  );
 }
-
 .vich-image {
   .form-check {
     @extend .mt-3;
@@ -23,11 +27,4 @@ body {
     @extend .rounded;
     @extend .shadow;
   }
-
- 
-
- 
-    
-  
-
 }
