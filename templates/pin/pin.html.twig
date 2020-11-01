@@ -6,7 +6,7 @@
 <div class="row">
 <div class="col-md-6 mx-auto">
 <article class="pin bg-white rounded shadow">
-<div class="mw-100 overflow-hidden">
+<div class="rounded-top mw-100 overflow-hidden">
 <a href="{{path('app_pin_show', {id: pin.id})}}">
 <img src="{{ (pin.imageName ? vich_uploader_asset(pin) : asset('images/placeholder.jpg')) | imagine_filter('square_thumbnail_medium')}}" alt="{{ pin.title }}" class="w-100"></a>
 </div>
