@@ -22,9 +22,9 @@ nav {
   }
 
   img {
-    @extend .mb-2;
-    @extend .img-thumbnail;
-    @extend .rounded;
-    @extend .shadow;
+    @extend .mb-2,
+     .img-thumbnail,
+     .rounded,
+     .shadow;
   }
 }
