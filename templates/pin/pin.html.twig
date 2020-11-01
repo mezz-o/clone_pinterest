@@ -13,7 +13,7 @@
 
 <a class="text-secondary text-decoration-none" href="{{path('app_pin_show', {id: pin.id})}}"><h5 class="pl-3 pt-3">{{pin.title}}</h5></a>
 {# Doesnt cut words #}
-<p class="pb-3 pl-3 text-muted"><small>Submitted {{pin.createdAt|ago}} by [OWNER FULL NAME]</small></p>
+<p class="pb-3 pl-3 text-muted"><small>Submitted {{pin.createdAt|ago}} by {{pin.user.fullName}}</small></p>
 <p class="pl-3 pb-3"> {{ pin.description }}</p>
 <div class="pl-3 pb-3">
 <a class="btn-grad " href="{{path('app_pin_edit', {id:pin.id})}}">Edit</a>
