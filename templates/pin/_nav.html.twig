@@ -7,10 +7,16 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav ml-auto">
-      <a class="nav-item nav-link " href="{{ path('app_home') }}">Home <span class="sr-only">(current)</span></a>
+     
+     {% if app.user %}
+     
       <a class="nav-item nav-link" href="{{ path('app_pin_create') }}">New Pin</a>
             <a class="nav-item nav-link" href="#">Account</a>
-      <a class="nav-item nav-link" href="#">Logout</a>
+      <a class="nav-item nav-link" href="{{ path("app_logout") }}">Logout</a>
+{% else %}
+                  <a class="nav-item nav-link" href="#">Subscribe</a>
+      <a class="nav-item nav-link" href="{{ path("app_login") }}">Login</a>
+{% endif %}
 
     </div>
   </div>
