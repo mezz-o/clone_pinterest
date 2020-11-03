@@ -52,8 +52,8 @@ footer {
   </style>
 
   <body>
+      {{ include('/pin/_flash.html.twig') }}
     {{ include('/pin/_nav.html.twig') }}
-    {{ include('/pin/_flash.html.twig') }}
 
     <main role="main" class="container">
       {% block body %}
